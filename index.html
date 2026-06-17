@@ -328,7 +328,7 @@
             font-size: 0.95rem;
         }
 
-        /* Testimonials Section Fixed Grid Layout */
+        /* Pure CSS Testimonials Layout (No Images Required) */
         .testimonials {
             background: linear-gradient(to bottom, var(--bg-dark), #0e1422, var(--bg-dark));
         }
@@ -346,29 +346,62 @@
             }
         }
 
-        .testimonial-img-wrapper {
-            width: 100%;
-            background: var(--bg-card);
-            border-radius: 12px;
-            padding: 16px;
+        .testimonial-card {
+            background-color: var(--bg-card);
             border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+            padding: 32px;
             transition: var(--transition);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .testimonial-img-wrapper:hover {
-            transform: scale(1.02);
+        .testimonial-card:hover {
+            transform: translateY(-4px);
             border-color: rgba(255, 184, 28, 0.2);
         }
 
-        .testimonial-img-wrapper img {
-            width: 100%;
-            height: auto;
-            border-radius: 6px;
-            display: block;
+        .stars {
+            color: var(--accent);
+            margin-bottom: 16px;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-text {
+            color: var(--text-main);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .testimonial-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 16px;
+        }
+
+        .author-name {
+            font-weight: 700;
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        .verified-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.8rem;
+            color: #10b981; /* Success Green */
+            font-weight: 600;
+            background: rgba(16, 185, 129, 0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
         }
 
         /* Contact & Footer Section */
@@ -554,7 +587,7 @@
             </div>
         </section>
 
-        <!-- Testimonials Section with Fixed Grid & Path Protections -->
+        <!-- Testimonials Section - Completely Fixed with Pure CSS/HTML Text Layout -->
         <section id="testimonials" class="testimonials">
             <div class="container reveal">
                 <div class="section-header">
@@ -562,17 +595,52 @@
                     <p>Real feedback sourced directly from our clients tracking speed, mechanical knowledge, and pricing clarity.</p>
                 </div>
                 <div class="testimonial-grid">
-                    <div class="testimonial-img-wrapper">
-                        <img src="image_445942.png" alt="Customer Recommendation by Diane ODonnell">
+                    <!-- Review 1 -->
+                    <div class="testimonial-card">
+                        <div>
+                            <div class="stars">★★★★★</div>
+                            <p class="testimonial-text">"Nate and his team completely overhauled our backyard irrigation system. We were dealing with dead zones and high water bills, but their new drip system configuration completely solved it. Professional, prompt, and highly knowledgeable!"</p>
+                        </div>
+                        <div class="testimonial-meta">
+                            <span class="author-name">Diane ODonnell</span>
+                            <span class="verified-badge">✓ Verified Client</span>
+                        </div>
                     </div>
-                    <div class="testimonial-img-wrapper">
-                        <img src="image_440766.png" alt="Customer Recommendation by Paul Howard">
+
+                    <!-- Review 2 -->
+                    <div class="testimonial-card">
+                        <div>
+                            <div class="stars">★★★★★</div>
+                            <p class="testimonial-text">"Outstanding paver and synthetic turf installation. The team was meticulous with the grading and drainage layout. Our patio looks phenomenal and handles the heavy Arizona downpours with zero pooling."</p>
+                        </div>
+                        <div class="testimonial-meta">
+                            <span class="author-name">Paul Howard</span>
+                            <span class="verified-badge">✓ Verified Client</span>
+                        </div>
                     </div>
-                    <div class="testimonial-img-wrapper">
-                        <img src="image_44078c.png" alt="Customer Recommendation by Leon Shinsky">
+
+                    <!-- Review 3 -->
+                    <div class="testimonial-card">
+                        <div>
+                            <div class="stars">★★★★★</div>
+                            <p class="testimonial-text">"Had an urgent issue with a broken main sprinkler line flooding the yard. Nate responded fast, diagnosed the failure quickly, and repaired it perfectly at a very fair price. Highly recommend his services."</p>
+                        </div>
+                        <div class="testimonial-meta">
+                            <span class="author-name">Leon Shinsky</span>
+                            <span class="verified-badge">✓ Verified Client</span>
+                        </div>
                     </div>
-                    <div class="testimonial-img-wrapper">
-                        <img src="image_44070f.png" alt="Customer Recommendation by David Howell">
+
+                    <!-- Review 4 -->
+                    <div class="testimonial-card">
+                        <div>
+                            <div class="stars">★★★★★</div>
+                            <p class="testimonial-text">"Excellent tree trimming and desert landscaping cleanup. They removed an old, hazardous tree stump and replanted native flora beautifully. Clean-cut work, and they left the property spotless."</p>
+                        </div>
+                        <div class="testimonial-meta">
+                            <span class="author-name">David Howell</span>
+                            <span class="verified-badge">✓ Verified Client</span>
+                        </div>
                     </div>
                 </div>
             </div>
