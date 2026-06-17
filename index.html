@@ -263,7 +263,7 @@
         /* Services Grid Layout */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1max));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
         }
 
@@ -328,33 +328,35 @@
             font-size: 0.95rem;
         }
 
-        /* Testimonials Section */
+        /* Testimonials Section Fixed Grid Layout */
         .testimonials {
             background: linear-gradient(to bottom, var(--bg-dark), #0e1422, var(--bg-dark));
         }
 
-        .testimonial-masonry {
-            columns: 2;
-            column-gap: 30px;
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            width: 100%;
         }
 
         @media(max-width: 900px) {
-            .testimonial-masonry {
-                columns: 1;
+            .testimonial-grid {
+                grid-template-columns: 1fr;
             }
         }
 
         .testimonial-img-wrapper {
-            display: block;
             width: 100%;
-            margin-bottom: 30px;
-            break-inside: avoid;
             background: var(--bg-card);
             border-radius: 12px;
             padding: 16px;
             border: 1px solid rgba(255, 255, 255, 0.04);
             transition: var(--transition);
             box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .testimonial-img-wrapper:hover {
@@ -456,7 +458,7 @@
                 font-size: 2.5rem;
             }
             nav ul {
-                display: none; /* Simplification for quick preview build */
+                display: none;
             }
             .section-header h2 {
                 font-size: 2rem;
@@ -476,7 +478,7 @@
             <nav>
                 <ul>
                     <li><a href="#about">About Us</a></li>
-                    <li><a href="#services">Our Expertises</a></li>
+                    <li><a href="#services">Our Expertise</a></li>
                     <li><a href="#testimonials">Reviews</a></li>
                     <li><a href="tel:+16233297399" class="nav-phone">📞 Quick Call</a></li>
                 </ul>
@@ -552,25 +554,25 @@
             </div>
         </section>
 
-        <!-- Testimonials Section using the exact crop assets verbatim -->
+        <!-- Testimonials Section with Fixed Grid & Path Protections -->
         <section id="testimonials" class="testimonials">
             <div class="container reveal">
                 <div class="section-header">
                     <h2>Vouched For By The Local Community</h2>
                     <p>Real feedback sourced directly from our clients tracking speed, mechanical knowledge, and pricing clarity.</p>
                 </div>
-                <div class="testimonial-masonry">
+                <div class="testimonial-grid">
                     <div class="testimonial-img-wrapper">
-                        <img src="image_445942.png" alt="Customer Recommendation by Diane ODonnell" loading="lazy">
+                        <img src="image_445942.png" alt="Customer Recommendation by Diane ODonnell">
                     </div>
                     <div class="testimonial-img-wrapper">
-                        <img src="image_44078c.png" alt="Customer Recommendation by Leon Shinsky" loading="lazy">
+                        <img src="image_440766.png" alt="Customer Recommendation by Paul Howard">
                     </div>
                     <div class="testimonial-img-wrapper">
-                        <img src="image_440766.png" alt="Customer Recommendation by Paul Howard" loading="lazy">
+                        <img src="image_44078c.png" alt="Customer Recommendation by Leon Shinsky">
                     </div>
                     <div class="testimonial-img-wrapper">
-                        <img src="image_44070f.png" alt="Customer Recommendation by David Howell" loading="lazy">
+                        <img src="image_44070f.png" alt="Customer Recommendation by David Howell">
                     </div>
                 </div>
             </div>
@@ -625,7 +627,7 @@
             };
 
             window.addEventListener('scroll', revealOnScroll);
-            revealOnScroll(); // Trigger instantly on load for visibility check
+            revealOnScroll(); // Trigger instantly on load
         });
     </script>
 </body>
