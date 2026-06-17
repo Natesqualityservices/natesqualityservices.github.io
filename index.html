@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nate's Quality Services | Irrigation & Landscaping Specialist Buckeye AZ</title>
+    <style>
+        /* Modern CSS Variables & Reset */
+        :root {
+            --bg-dark: #0b0f19;
+            --bg-card: #131c2e;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --primary: #00a3e0; /* Irrigation Blue */
+            --primary-hover: #0082b4;
+            --accent: #ffb81c; /* Landscape Lighting Amber */
+            --accent-hover: #e0a115;
+            --font-stack: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-family: var(--font-stack);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+        }
+
+        body {
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Utility Layouts & Classes */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            gap: 8px;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: #ffffff;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 163, 224, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Scroll Animation Hooks */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Header Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(11, 15, 25, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: var(--text-main);
+        }
+
+        .nav-phone {
+            color: var(--accent) !important;
+            border: 1px solid rgba(255, 184, 28, 0.3);
+            padding: 8px 16px;
+            border-radius: 6px;
+        }
+
+        .nav-phone:hover {
+            background: rgba(255, 184, 28, 0.1);
+            border-color: var(--accent);
+        }
+
+        /* Hero Banner Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(to bottom, rgba(11, 15, 25, 0.7), rgba(11, 15, 25, 0.95)), url('image_520067.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding-top: 100px;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to top, var(--bg-dark), transparent);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            z-index: 2;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(0, 163, 224, 0.1);
+            border: 1px solid rgba(0, 163, 224, 0.2);
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+            animation: fadeIn 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+            background: linear-gradient(45deg, var(--accent), #ffd26a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 36px;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* Section Global Config */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 60px auto;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* Services Grid Layout */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1max));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 40px 32px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 163, 224, 0.2);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--primary);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .service-card:hover .icon-box {
+            background: rgba(0, 163, 224, 0.1);
+            color: var(--primary);
+        }
+
+        .service-card h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: linear-gradient(to bottom, var(--bg-dark), #0e1422, var(--bg-dark));
+        }
+
+        .testimonial-masonry {
+            columns: 2;
+            column-gap: 30px;
+        }
+
+        @media(max-width: 900px) {
+            .testimonial-masonry {
+                columns: 1;
+            }
+        }
+
+        .testimonial-img-wrapper {
+            display: block;
+            width: 100%;
+            margin-bottom: 30px;
+            break-inside: avoid;
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .testimonial-img-wrapper:hover {
+            transform: scale(1.02);
+            border-color: rgba(255, 184, 28, 0.2);
+        }
+
+        .testimonial-img-wrapper img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            display: block;
+        }
+
+        /* Contact & Footer Section */
+        footer {
+            background-color: #060911;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 80px 0 40px 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        @media(max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        .footer-brand h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand h4 span {
+            color: var(--primary);
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            max-width: 400px;
+        }
+
+        .footer-links h5 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 4px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Animations Keyframes */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            nav ul {
+                display: none; /* Simplification for quick preview build */
+            }
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Nav Layout -->
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">NQS<span>.</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Our Expertises</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="tel:+16233297399" class="nav-phone">📞 Quick Call</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Premium Hero Section -->
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="badge">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-5.523 0-10 4.477-10 10s4.477 10 10 10 10-4.477 10-10-4.477-10-10-10zm4.243 14.243l-5.243-3.243v-6h1.5v5.135l4.5 2.783-.757 1.325z"/></svg>
+                        Locally Owned & Operated
+                    </div>
+                    <h1>Nate's Quality <span>Services</span></h1>
+                    <p>We craft high-performance irrigation systems, modern clean-cut paver designs, rich turf layers, and comprehensive landscape setups designed to thrive. No guesswork, no cutting corners—just flawless operational execution for your property.</p>
+                    <div class="hero-actions">
+                        <a href="tel:+16233297399" class="btn btn-primary">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                            Call +1 623-329-7399
+                        </a>
+                        <a href="#services" class="btn btn-secondary">Explore Services</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About / Pitch Intro Block -->
+        <section id="about" class="container reveal">
+            <div class="services-grid" style="grid-template-columns: 1fr; background: var(--bg-card); border-radius: 16px; padding: 48px; border: 1px solid rgba(255,255,255,0.02)">
+                <div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 16px; color: var(--accent);">Reliable, High-Quality Results Every Time</h3>
+                    <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 900px;">
+                        Nate’s Quality Services specializes in irrigation system installation and repair, landscaping, pavers, turf, tree work, planting, junk removal, and more. We focus on building structural asset systems that save water, protect your soil integrity, and dramatically optimize outdoor aesthetic equity.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Custom Grid Services Block -->
+        <section id="services" class="container reveal">
+            <div class="section-header">
+                <h2>Our Core Specialties</h2>
+                <p>Engineered structural landscapes built to survive demanding climates while maintaining peak presentation value.</p>
+            </div>
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="icon-box">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M14 12a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </div>
+                    <h3>Irrigation Install & Repair</h3>
+                    <p>Custom commercial-grade diagnostic sweeps, layout maps, drip line setups, and immediate structural sprinkler repair fixes.</p>
+                </div>
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="icon-box">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    </div>
+                    <h3>Premium Pavers & Turf</h3>
+                    <p>Clean architectural grading and alignment for walkways, patios, and synthetic turf setups engineered for maximum drainage efficiency.</p>
+                </div>
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="icon-box">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                    </div>
+                    <h3>Tree Work & Planting</h3>
+                    <p>Meticulous specimen management, systematic crown care, trimming, and localized desert flora selection layouts.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section using the exact crop assets verbatim -->
+        <section id="testimonials" class="testimonials">
+            <div class="container reveal">
+                <div class="section-header">
+                    <h2>Vouched For By The Local Community</h2>
+                    <p>Real feedback sourced directly from our clients tracking speed, mechanical knowledge, and pricing clarity.</p>
+                </div>
+                <div class="testimonial-masonry">
+                    <div class="testimonial-img-wrapper">
+                        <img src="image_445942.png" alt="Customer Recommendation by Diane ODonnell" loading="lazy">
+                    </div>
+                    <div class="testimonial-img-wrapper">
+                        <img src="image_44078c.png" alt="Customer Recommendation by Leon Shinsky" loading="lazy">
+                    </div>
+                    <div class="testimonial-img-wrapper">
+                        <img src="image_440766.png" alt="Customer Recommendation by Paul Howard" loading="lazy">
+                    </div>
+                    <div class="testimonial-img-wrapper">
+                        <img src="image_44070f.png" alt="Customer Recommendation by David Howell" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Production Footer with Contact Metadata -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <h4>NQS<span>.</span></h4>
+                <p>Delivering precision landscape infrastructure, structural irrigation installations, and specialized stone paving features across Arizona.</p>
+                <a href="tel:+16233297399" class="btn btn-primary">📞 Call Direct</a>
+            </div>
+            <div class="footer-links">
+                <h5>Our Scope</h5>
+                <ul>
+                    <li><a href="#services">Irrigation Tuning</a></li>
+                    <li><a href="#services">Paver Installs</a></li>
+                    <li><a href="#services">Turf Dressing</a></li>
+                    <li><a href="#services">Junk Removal</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h5>Location Base</h5>
+                <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                    25, Buckeye,<br>
+                    AZ, United States,<br>
+                    85326
+                </p>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Nate's Quality Services. All Rights Reserved.</p>
+            <p>Locally Managed Standard Project Deployment</p>
+        </div>
+    </footer>
+
+    <!-- Fluid Scroll Animation Handler Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            const revealOnScroll = () => {
+                const triggerBottom = window.innerHeight * 0.85;
+                reveals.forEach(reveal => {
+                    const revealTop = reveal.getBoundingClientRect().top;
+                    if (revealTop < triggerBottom) {
+                        reveal.classList.add('active');
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll(); // Trigger instantly on load for visibility check
+        });
+    </script>
+</body>
+</html>
